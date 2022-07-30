@@ -7,7 +7,6 @@ La Red IRAG no tiene API, así que extraemoes el JSON dentro del HTML.
 
 import csv
 from datetime import datetime, timedelta
-from h11 import Data
 
 import requests
 
