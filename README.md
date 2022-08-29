@@ -14,7 +14,7 @@ Con este archivo CSV se puede generar una gráfica como la siguiente.
 
 ## Contenido
 
-* scraper.py: Programa para obtener los datos de ocupaci;on de camgas generales en México y guardarlos en CSV.
+* scraper.py: Programa para obtener los datos de ocupaci;on de camas generales en México y guardarlos en CSV.
 
 * plotter.py: Programa para generar la gráfica anterior.
 
