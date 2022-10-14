@@ -8,15 +8,22 @@ La única sección donde existen cantidades absolutas es en la ocupación de cam
 
 Este repositorio tiene el propósito de obtener dicha información mediante web scraping y almacenarla en un archivo CSV.
 
-Con este archivo CSV se puede generar una gráfica como la siguiente.
+Con este archivo CSV se pueden generar gráficas como las siguientes.
 
 ![Imagen 1](./1.png)
 
+![Imagen 2020](./2020.png)
+
+![Imagen 2021](./2021.png)
+
+![Imagen 2022](./2022.png)
+
+
 ## Contenido
 
-* scraper.py: Programa para obtener los datos de ocupaci;on de camas generales en México y guardarlos en CSV.
+* scraper.py: Programa para obtener los datos de ocupaci;on de camgas generales en México y guardarlos en CSV.
 
-* plotter.py: Programa para generar la gráfica anterior.
+* plotter.py: Programa para generar las gráficas anteriores.
 
 * data.csv: Dataset con la ocupación de camas generales por día.
 
