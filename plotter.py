@@ -122,7 +122,7 @@ def crear_calendario(year):
     # esto es para poder acomodarlas de 0 a 52.
     numeros_de_esmanas = list()
 
-    for semana in range(53):
+    for semana in range(54):
         numeros_de_esmanas.extend([semana for _ in range(7)])
 
     # Necesitamos saber en que día de la semana fue el primer dái del año
@@ -145,8 +145,8 @@ def crear_calendario(year):
     meses_marcas = np.linspace(1.5, 49.5, 12)
 
     # Utilizado para nuestro eje vertical.
-    days_ticks = {0: "Lunes", 1: "Martes", 2: "Miércoles",
-                  3: "Jueves", 4: "Viernes", 5: "Sábado", 6: "Domingo"}
+    days_ticks = {0: "Lun.", 1: "Mar.", 2: "Mié.",
+                  3: "Jue.", 4: "Vie.", 5: "Sáb.", 6: "Dom."}
 
     # Creamos las marcas para nuestra escala lateral.
     marcas_valores = np.arange(0, 28000, 4000)
@@ -214,10 +214,9 @@ def crear_calendario(year):
     )
 
     fig.update_xaxes(
-        title="",
         side="top",
         tickfont_size=20,
-        range=[-1, 53],
+        range=[-1, 53 if len(final) == 365 else 54],
         ticktext=meses_etiquetas,
         tickvals=meses_marcas,
         ticks="outside",
@@ -258,7 +257,7 @@ def crear_calendario(year):
         title_x=0.5,
         title_y=0.93,
         margin_t=100,
-        margin_l=125,
+        margin_l=100,
         margin_r=125,
         margin_b=55,
         title_font_size=26,
