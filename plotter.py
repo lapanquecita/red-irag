@@ -216,7 +216,7 @@ def crear_calendario(year):
     fig.update_xaxes(
         side="top",
         tickfont_size=20,
-        range=[-1, 53 if len(final) == 365 else 54],
+        range=[-1, max(final["week"] + 1],
         ticktext=meses_etiquetas,
         tickvals=meses_marcas,
         ticks="outside",
