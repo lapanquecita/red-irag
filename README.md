@@ -10,14 +10,19 @@ Este repositorio tiene el propósito de obtener dicha información mediante web 
 
 Con este archivo CSV se pueden generar gráficas como las siguientes.
 
-![Imagen 1](./1.png)
+## Gráfica de área
 
-![Imagen 2020](./2020.png)
+![Imagen 1](./imgs/1.png)
 
-![Imagen 2021](./2021.png)
+## Gráficas de tipo calendario
 
-![Imagen 2022](./2022.png)
+![Imagen 2020](./imgs/2020.png)
 
+![Imagen 2021](./imgs/2021.png)
+
+![Imagen 2022](./imgs/2022.png)
+
+![Imagen 2023](./imgs/2023.png)
 
 ## Contenido
 

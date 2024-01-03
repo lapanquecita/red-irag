@@ -44,7 +44,7 @@ def main():
 
         # No todas las fechas tienen valores.
         try:
-            # VAmos a buscar los datos de la fecha de la iteración.
+            # Vamos a buscar los datos de la fecha de la iteración.
             inicio = respuesta.find(f"date:'{fecha_temporal}', hospi_phg:")
             final = respuesta.find(";", inicio)
             valor = int(respuesta[inicio + 29:final - 3])

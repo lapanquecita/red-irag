@@ -89,7 +89,7 @@ def crear_calendarios():
     Esta función creará un calendario para cada año.
     """
 
-    for año in [2020, 2021, 2022]:
+    for año in [2020, 2021, 2022, 2023]:
         crear_calendario(año)
 
 
@@ -149,26 +149,23 @@ def crear_calendario(year):
                   3: "Jue.", 4: "Vie.", 5: "Sáb.", 6: "Dom."}
 
     # Creamos las marcas para nuestra escala lateral.
-    marcas_valores = np.arange(0, 28000, 4000)
-    marcas_textos = [f"{valor / 1000:,.0f}k" for valor in marcas_valores]
-    marcas_textos[0] = "0"
+    valor_min = final["hospitalizados"].min()
+    valor_max = final["hospitalizados"].quantile(0.95)
 
-    # Esta escala de colores está diseñada para acentuar los
-    # valores máximos y ocultar los mínimos (0).`
-    escala_de_colores = [
-        [0, "#041C32"],
-        [0.0005, "#0d47a1"],
-        [0.25, "#689f38"],
-        [0.5, "#ffd600"],
-        [0.75, "#ff6f00"],
-        [0.95, "#c62828"],
-        [1.0, "#8B0000"],
-    ]
+    marcas_valores = np.linspace(valor_min, valor_max, 7)
+    marcas_textos = list()
+
+    for marca in marcas_valores:
+        if marca >= 1000:
+            marcas_textos.append(f"{marca / 1000:,.1f}k")
+        else:
+            marcas_textos.append(f"{marca:,.0f}")
+
+    marcas_textos[-1] = f"≥{marcas_textos[-1]}"
 
     # Vamos a crear dos mapas de calor, uno será usado para lor bordes
     # decada mes y el otro para poner los datos de hospitalizaciones.
     fig = go.Figure()
-
 
     # El mapa de calor de bordes es muy sencillo, pero es importante notar
     # los parámetros xgap y ygap.
@@ -195,9 +192,9 @@ def crear_calendario(year):
             z=final["hospitalizados"],
             xgap=5,
             ygap=16,
-            colorscale=escala_de_colores,
-            zmin=0,
-            zmax=24000,
+            colorscale="rainbow",
+            zmin=valor_min,
+            zmax=valor_max,
             colorbar={
                 "tickvals": marcas_valores,
                 "ticktext": marcas_textos,
@@ -216,7 +213,7 @@ def crear_calendario(year):
     fig.update_xaxes(
         side="top",
         tickfont_size=20,
-        range=[-1, max(final["week"] + 1],
+        range=[-1, final["semana"].max() + 1],
         ticktext=meses_etiquetas,
         tickvals=meses_marcas,
         ticks="outside",
