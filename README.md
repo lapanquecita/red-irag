@@ -2,9 +2,9 @@
 
 El sitio web de la red IRAG (https://www.gits.igg.unam.mx/red-irag-dashboard/reviewHome) se encarga de llevar el seguimiento de los pacientes hospitalizados por COVID-19 en México.
 
-Desafortunadamente en casi todas las secciones del sitio web sólo se muestran porcentajes y no cantiades absolutas, por lo tanto no sabemos exactamente que tan grave es la situación en cada hospital, estado o en el país.
+Desafortunadamente en casi todas las secciones del sitio web solo se muestran porcentajes y no cifras absolutas, por lo tanto no sabemos exactamente que tan grave es la situación en cada hospital, entidad o en el país.
 
-La única sección donde existen cantidades absolutas es en la ocupación de camas generales en el país.
+La única sección donde existen cifras absolutas es en la ocupación de camas generales a nivel nacional.
 
 Este repositorio tiene el propósito de obtener dicha información mediante web scraping y almacenarla en un archivo CSV.
 
@@ -30,7 +30,7 @@ Con este archivo CSV se pueden generar gráficas como las siguientes.
 
 * plotter.py: Programa para generar las gráficas anteriores.
 
-* data.csv: Dataset con la ocupación de camas generales por día.
+* data.csv: Dataset con la ocupación de camas generales por día en forma de series de tiempo.
 
 ## Conclusión
 
