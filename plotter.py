@@ -32,12 +32,10 @@ def area_chart():
     )
 
     fig.update_xaxes(
-        title="",
         tickformat="%b<br>%Y",
         ticks="outside",
         ticklen=10,
         zeroline=False,
-        title_standoff=0,
         tickcolor="#FFFFFF",
         linewidth=2,
         gridwidth=0.5,
@@ -69,11 +67,11 @@ def area_chart():
         font_size=16,
         title_text="Número de camas generales ocupadas para COVID-19 en México",
         title_x=0.5,
-        title_y=0.975,
-        margin_t=50,
+        title_y=0.97,
+        margin_t=55,
         margin_r=40,
         margin_b=105,
-        margin_l=120,
+        margin_l=100,
         title_font_size=26,
         plot_bgcolor="#2A0944",
         paper_bgcolor="#3B185F",
