@@ -24,6 +24,8 @@ Con este archivo CSV se pueden generar gráficas como las siguientes.
 
 ![Imagen 2023](./imgs/2023.png)
 
+![Imagen 2024](./imgs/2024.png)
+
 ## Contenido
 
 * scraper.py: Programa para obtener los datos de ocupaci;on de camgas generales en México y guardarlos en CSV.

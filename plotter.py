@@ -12,8 +12,7 @@ def area_chart():
     Esta función grafica una simple gráfica de área.
     """
 
-    df = pd.read_csv(
-        "./data.csv", parse_dates=["isodate"], index_col="isodate")
+    df = pd.read_csv("./data.csv", parse_dates=["isodate"], index_col="isodate")
 
     # Remuestreado con la media semanal.
     # Se libre de filtrar por fecha o cambiar el periodo.
@@ -28,7 +27,8 @@ def area_chart():
             mode="lines",
             line_color="#FEC260",
             line_width=5,
-            fill="tozeroy")
+            fill="tozeroy",
+        )
     )
 
     fig.update_xaxes(
@@ -43,7 +43,7 @@ def area_chart():
         gridwidth=0.5,
         showline=True,
         mirror=True,
-        nticks=20
+        nticks=20,
     )
 
     fig.update_yaxes(
@@ -57,7 +57,7 @@ def area_chart():
         gridwidth=0.5,
         showline=True,
         mirror=True,
-        nticks=17
+        nticks=17,
     )
 
     fig.update_layout(
@@ -78,7 +78,7 @@ def area_chart():
         margin_b=0,
         title_font_size=36,
         plot_bgcolor="#2A0944",
-        paper_bgcolor="#3B185F"
+        paper_bgcolor="#3B185F",
     )
 
     fig.write_image("./1.png")
@@ -89,7 +89,7 @@ def crear_calendarios():
     Esta función creará un calendario para cada año.
     """
 
-    for año in [2020, 2021, 2022, 2023]:
+    for año in [2020, 2021, 2022, 2023, 2024]:
         crear_calendario(año)
 
 
@@ -100,11 +100,7 @@ def crear_calendario(year):
     """
 
     # Cargamos el dataset y especificamos el campo 'isodate' como nuestro índice.
-    df = pd.read_csv(
-        "./data.csv",
-        parse_dates=["isodate"],
-        index_col="isodate"
-    )
+    df = pd.read_csv("./data.csv", parse_dates=["isodate"], index_col="isodate")
 
     # Solo seleccionamos los valores del año específicado.
     df = df[df.index.year == year]
@@ -112,8 +108,10 @@ def crear_calendario(year):
     # Creamos un esqueleto con todos los días del año especificado.
     # Después agregamos la columna de hospitalizados de nuestro DataFrame anterior.
     # Para los días sin datos esto nos dará valores NaN.
-    final = pd.DataFrame(index=pd.date_range(
-        f"{year}-01-01", f"{year}-12-31", freq="d"), data={"hospitalizados": df["hospitalizados"]})
+    final = pd.DataFrame(
+        index=pd.date_range(f"{year}-01-01", f"{year}-12-31", freq="d"),
+        data={"hospitalizados": df["hospitalizados"]},
+    )
 
     # Opcional: rellenar valores NaN con 0.
     final.fillna(0, inplace=True)
@@ -129,7 +127,7 @@ def crear_calendario(year):
     # esto con el propósito de poder cortar la lista anterior.
     pad = final.index[0].dayofweek
 
-    final["semana"] = numeros_de_esmanas[pad:len(final) + pad]
+    final["semana"] = numeros_de_esmanas[pad : len(final) + pad]
 
     final["diadelasemana"] = final.index.dayofweek
 
@@ -138,15 +136,31 @@ def crear_calendario(year):
 
     # Utilizado para nuestro eje horizontal.
     meses_etiquetas = [
-        "Ene.", "Feb.", "Mar.", "Abr.",
-        "May.", "Jun.", "Jul.", "Ago.",
-        "Sep.", "Oct.", "Nov.", "Dic."
+        "Ene.",
+        "Feb.",
+        "Mar.",
+        "Abr.",
+        "May.",
+        "Jun.",
+        "Jul.",
+        "Ago.",
+        "Sep.",
+        "Oct.",
+        "Nov.",
+        "Dic.",
     ]
     meses_marcas = np.linspace(1.5, 49.5, 12)
 
     # Utilizado para nuestro eje vertical.
-    days_ticks = {0: "Lun.", 1: "Mar.", 2: "Mié.",
-                  3: "Jue.", 4: "Vie.", 5: "Sáb.", 6: "Dom."}
+    days_ticks = {
+        0: "Lun.",
+        1: "Mar.",
+        2: "Mié.",
+        3: "Jue.",
+        4: "Vie.",
+        5: "Sáb.",
+        6: "Dom.",
+    }
 
     # Creamos las marcas para nuestra escala lateral.
     valor_min = final["hospitalizados"].min()
@@ -176,8 +190,7 @@ def crear_calendario(year):
             z=final["borde"],
             xgap=1,
             ygap=12,
-            colorscale=["hsla(0, 100%, 100%, 0.0)",
-                        "hsla(0, 100%, 100%, 1.0)"],
+            colorscale=["hsla(0, 100%, 100%, 0.0)", "hsla(0, 100%, 100%, 1.0)"],
             showscale=False,
         )
     )
@@ -192,21 +205,21 @@ def crear_calendario(year):
             z=final["hospitalizados"],
             xgap=5,
             ygap=16,
-            colorscale="rainbow",
+            colorscale="portland",
             zmin=valor_min,
             zmax=valor_max,
-            colorbar={
-                "tickvals": marcas_valores,
-                "ticktext": marcas_textos,
-                "ticks": "outside",
-                "outlinewidth": 1.5,
-                "thickness": 20,
-                "outlinecolor": "#FFFFFF",
-                "tickwidth": 2,
-                "tickcolor": "#FFFFFF",
-                "ticklen": 10,
-                "tickfont_size": 16,
-            }
+            colorbar=dict(
+                tickvals=marcas_valores,
+                ticktext=marcas_textos,
+                ticks="outside",
+                outlinewidth=1.5,
+                thickness=20,
+                outlinecolor="#FFFFFF",
+                tickwidth=2,
+                tickcolor="#FFFFFF",
+                ticklen=10,
+                tickfont_size=16,
+            ),
         )
     )
 
@@ -250,7 +263,7 @@ def crear_calendario(year):
         font_family="Quicksand",
         font_color="#FFFFFF",
         font_size=20,
-        title_text=f"Número de camas generales ocupadas por COVID-19 en México durante el {year} por día",
+        title_text=f"Número de camas generales ocupadas para COVID-19 en México durante el {year}",
         title_x=0.5,
         title_y=0.93,
         margin_t=100,
@@ -268,7 +281,7 @@ def crear_calendario(year):
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Red IRAG"
+                text="Fuente: Red IRAG (2024)",
             ),
             dict(
                 x=0.5,
@@ -277,7 +290,7 @@ def crear_calendario(year):
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="□: Inicio del mes"
+                text="□: Inicio del mes",
             ),
             dict(
                 x=1.01,
@@ -286,15 +299,14 @@ def crear_calendario(year):
                 yref="paper",
                 xanchor="right",
                 yanchor="top",
-                text="🧁 @lapanquecita"
-            )
-        ]
+                text="🧁 @lapanquecita",
+            ),
+        ],
     )
 
     fig.write_image(f"./{year}.png")
 
 
 if __name__ == "__main__":
-
-    area_chart()
+    # area_chart()
     crear_calendarios()
