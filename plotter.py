@@ -47,7 +47,7 @@ def area_chart():
     )
 
     fig.update_yaxes(
-        title="Prom. hospitalizados semanales",
+        title="Promedio semanal de camas ocupadas",
         ticks="outside",
         ticklen=10,
         title_standoff=10,
@@ -62,23 +62,50 @@ def area_chart():
 
     fig.update_layout(
         showlegend=False,
-        legend_borderwidth=1.5,
-        xaxis_rangeslider_visible=False,
         width=1280,
         height=720,
         font_family="Quicksand",
-        font_color="white",
-        font_size=18,
-        title_text="Hospitalizados (no  UCI) semanales en México por COVID-19",
+        font_color="#FFFFFF",
+        font_size=16,
+        title_text="Número de camas generales ocupadas para COVID-19 en México",
         title_x=0.5,
-        title_y=0.95,
-        margin_t=90,
-        margin_l=120,
+        title_y=0.975,
+        margin_t=50,
         margin_r=40,
-        margin_b=0,
-        title_font_size=36,
+        margin_b=105,
+        margin_l=120,
+        title_font_size=26,
         plot_bgcolor="#2A0944",
         paper_bgcolor="#3B185F",
+        annotations=[
+            dict(
+                x=0.01,
+                y=-0.18,
+                xref="paper",
+                yref="paper",
+                xanchor="left",
+                yanchor="top",
+                text="Fuente: Red IRAG (2024)",
+            ),
+            dict(
+                x=0.5,
+                y=-0.18,
+                xref="paper",
+                yref="paper",
+                xanchor="center",
+                yanchor="top",
+                text="Mes y año de registro",
+            ),
+            dict(
+                x=1.01,
+                y=-0.18,
+                xref="paper",
+                yref="paper",
+                xanchor="right",
+                yanchor="top",
+                text="🧁 @lapanquecita",
+            ),
+        ],
     )
 
     fig.write_image("./1.png")
@@ -308,5 +335,5 @@ def crear_calendario(year):
 
 
 if __name__ == "__main__":
-    # area_chart()
+    area_chart()
     crear_calendarios()
