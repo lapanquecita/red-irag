@@ -27,6 +27,7 @@ def area_chart():
             mode="lines",
             line_color="#FEC260",
             line_width=5,
+            line_shape="spline",
             fill="tozeroy",
         )
     )
@@ -106,7 +107,7 @@ def area_chart():
         ],
     )
 
-    fig.write_image("./1.png")
+    fig.write_image("./imgs/1.png")
 
 
 def crear_calendarios():
@@ -329,7 +330,7 @@ def crear_calendario(year):
         ],
     )
 
-    fig.write_image(f"./{year}.png")
+    fig.write_image(f"./imgs/{year}.png")
 
 
 if __name__ == "__main__":
