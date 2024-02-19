@@ -316,7 +316,7 @@ def crear_calendario(year):
                 yref="paper",
                 xanchor="center",
                 yanchor="top",
-                text="□: Inicio del mes",
+                text="El □ indica el Inicio de cada mes",
             ),
             dict(
                 x=1.01,
