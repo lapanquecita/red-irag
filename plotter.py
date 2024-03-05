@@ -285,7 +285,7 @@ def crear_calendario(year):
     fig.update_layout(
         showlegend=False,
         width=1280,
-        height=380,
+        height=400,
         # font_family="Quicksand",
         font_color="#FFFFFF",
         font_size=20,
