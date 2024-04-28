@@ -293,7 +293,7 @@ def crear_calendario(year):
         title_x=0.5,
         title_y=0.93,
         margin_t=100,
-        margin_l=100,
+        margin_l=90,
         margin_r=125,
         margin_b=55,
         title_font_size=26,
