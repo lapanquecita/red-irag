@@ -115,7 +115,7 @@ def crear_calendarios():
     Esta función creará un calendario para cada año.
     """
 
-    for año in [2020, 2021, 2022, 2023, 2024]:
+    for año in range(2020, 2026):
         crear_calendario(año)
 
 
@@ -307,7 +307,7 @@ def crear_calendario(year):
                 yref="paper",
                 xanchor="left",
                 yanchor="top",
-                text="Fuente: Red IRAG (2024)",
+                text="Fuente: Red IRAG (2025)",
             ),
             dict(
                 x=0.5,
